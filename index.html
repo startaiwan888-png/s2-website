@@ -6,69 +6,172 @@
 <title>S2 SPORTOGETHER</title>
 
 <style>
-body {font-family: Arial; margin:0; line-height:1.6;}
-header {background:#000; color:#fff; padding:20px; text-align:center;}
-nav a {color:#fff; margin:0 10px; text-decoration:none;}
-section {padding:60px 20px; max-width:900px; margin:auto;}
-h1,h2 {margin-bottom:20px;}
-.btn {
-  display:inline-block;
-  padding:12px 20px;
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+  font-family: Arial, sans-serif;
   background:#000;
   color:#fff;
-  text-decoration:none;
-  margin-top:10px;
+  overflow-x:hidden;
 }
-.hero {text-align:center; padding:100px 20px;}
+
+/* NAV */
+nav {
+  position:fixed;
+  width:100%;
+  top:0;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  z-index:1000;
+}
+nav a {
+  color:#aaa;
+  margin-left:20px;
+  text-decoration:none;
+}
+nav a:hover {color:#fff;}
+
+/* HERO */
+.hero {
+  height:100vh;
+  background:url("https://images.unsplash.com/photo-1517649763962-0c623066013b") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero h1 {
+  font-size:64px;
+  line-height:1.2;
+}
+.hero p {
+  margin-top:20px;
+  color:#ccc;
+}
+.btn {
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 28px;
+  background:#fff;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+.btn:hover {
+  background:#ccc;
+}
+
+/* SECTION */
+.section {
+  padding:120px 20px;
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.section.show {
+  opacity:1;
+  transform:translateY(0);
+}
+.section h2 {
+  font-size:40px;
+  margin-bottom:20px;
+}
+.section p {
+  color:#aaa;
+}
+
+/* IMAGE BLOCK */
+.block {
+  height:500px;
+  background-size:cover;
+  background-position:center;
+}
+
+/* CTA */
+.cta {
+  background:#111;
+  padding:120px 20px;
+  text-align:center;
+}
+.cta h2 {
+  font-size:42px;
+}
+
+/* FOOTER */
+footer {
+  padding:40px;
+  text-align:center;
+  color:#666;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h2>S2 SPORTOGETHER</h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#programs">Programs</a>
-    <a href="#cert">Certification</a>
-    <a href="#about">About</a>
+<nav>
+  <div>S2</div>
+  <div>
+    <a href="#system">System</a>
+    <a href="#coach">Coach</a>
     <a href="#apply">Apply</a>
-  </nav>
-</header>
+  </div>
+</nav>
 
-<section class="hero" id="home">
-  <h1>Train Timing. Win Before You Move.</h1>
-  <p>Not faster. Earlier.</p>
-  <a class="btn" href="#apply">Apply Now</a>
+<section class="hero">
+  <div>
+    <h1>Train Timing.<br>Win Before You Move.</h1>
+    <p>Not faster. Earlier.</p>
+    <a class="btn" href="#apply">Apply Now</a>
+  </div>
 </section>
 
-<section id="programs">
-  <h2>Programs</h2>
-  <p>S2 Rhythm Footwork System focuses on rhythm, timing, and movement intelligence.</p>
-  <p><strong>Rhythm Jump</strong> – Explosive timing and SSC</p>
-  <p><strong>Rhythm Step</strong> – Precision and control</p>
+<section class="section" id="system">
+  <h2>Timing is Everything</h2>
+  <p>Most athletes train speed. We train timing.</p>
 </section>
 
-<section id="cert">
-  <h2>Certification</h2>
-  <p>2 Days | 10 Hours</p>
-  <p>Become a certified S2 Rhythm Footwork Instructor.</p>
-  <p>Apply to athletes, coaches, and active aging training.</p>
-  <a class="btn" href="#apply">Join Now</a>
+<div class="block" style="background-image:url('https://images.unsplash.com/photo-1546519638-68e109498ffc')"></div>
+
+<section class="section">
+  <h2>Rhythm Footwork</h2>
+  <p>Jump. Step. React. Perform.</p>
 </section>
 
-<section id="about">
-  <h2>About</h2>
-  <p>Bobby Lee – Founder of S2 SPORTOGETHER</p>
-  <p>20+ years international experience</p>
-  <p>500+ coaches trained | 5000+ athletes impacted</p>
+<div class="block" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438')"></div>
+
+<section class="section" id="coach">
+  <h2>Become an S2 Coach</h2>
+  <p>Build your system. Expand your market.</p>
 </section>
 
-<section id="apply">
-  <h2>Apply</h2>
-  <p>Ready to upgrade your coaching system?</p>
+<section class="cta" id="apply">
+  <h2>Upgrade Your Coaching System</h2>
   <a class="btn" href="https://forms.gle/YOUR_LINK_HERE" target="_blank">Apply Now</a>
 </section>
+
+<footer>
+  S2 SPORTOGETHER © 2026
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < trigger){
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
